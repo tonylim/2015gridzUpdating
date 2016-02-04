@@ -1,0 +1,43 @@
+<!doctype html>
+<html>
+    <head>
+        <title>Muscular Hydrostat</title>
+        <link href='https://fonts.googleapis.com/css?family=Quantico:400' rel='stylesheet' type='text/css'>
+        <link rel="stylesheet" href="css/octupussStyle.css">
+    </head>
+    <body class="dark">
+    <div id="box"></div>
+    <script src="js/doppler.js"></script>
+    <script>
+      window.addEventListener('load', function() {
+        window.doppler.init(function(bandwidth) {
+          var threshold = 4;
+          if (bandwidth.left > threshold || bandwidth.right > threshold) {
+            var scale    = 10;
+            var baseSize = 100;
+            var diff = bandwidth.left - bandwidth.right;
+            var dimension = (baseSize + scale*diff) + 'px';
+            document.getElementById('box').style.width  = dimension;
+            document.getElementById('box').style.height = dimension;
+          }
+        });
+      });
+    </script>
+        <header class="info">
+            <hgroup class="about">
+                <h1>Muscular Hydrostats</h1>
+                <h2>Tentacle simulation using inverse kinematics</h2>
+                <h3>Click creature to control</h3>
+            </hgroup>
+            <nav class="more">
+                <a href="https://github.com/soulwire/Muscular-Hydrostats/zipball/master" target="_blank">Download</a>
+                <a href="https://github.com/soulwire/Muscular-Hydrostats" target="_blank">View on Github</a>
+            </nav>
+        </header>
+        <div id="container"></div>
+        <script src="https://soulwire.github.io/sketch.js/js/sketch.min.js"></script>
+        <script src="https://dat-gui.googlecode.com/git/build/dat.gui.min.js"></script>
+        <script src="https://dat-gui.googlecode.com/git/build/dat.color.min.js"></script>
+        <script src="js/tentacles.js"></script>
+    </body>
+</html>
